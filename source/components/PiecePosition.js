@@ -13,6 +13,7 @@ const PiecePosition = (props) => {
     let flexDirection = 'row';
     let height = gridSize;
     let gridWidth = PADDING;
+    let marginLeft = 0;
 
     switch (position) {
         case POSITION.LEFT:
@@ -24,6 +25,7 @@ const PiecePosition = (props) => {
             flexDirection = 'row';
             height = PADDING;
             gridWidth = gridSize;
+            marginLeft = PADDING;
             break;
         case POSITION.RIGHT:
             flexDirection = 'column';
@@ -34,23 +36,28 @@ const PiecePosition = (props) => {
             flexDirection = 'row';
             height = PADDING;
             gridWidth = gridSize;
+            marginLeft = PADDING;
             break;
     }
 
     return (
-        <View style={{            
+        <View style={{
             flexDirection: flexDirection,
-            backgroundColor: 'black',                  
+            backgroundColor: 'black',
+            paddingLeft: marginLeft
         }}>
             {labels.map(label => {
-                return <Text style={{
-                    fontWeight: '500',  
-                    color: 'white',
+                return <View style={{
                     height: height,
                     width: gridWidth,
-                    textAlign: 'center',
-                    backgroundColor: 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')'
-                }}>{label}</Text>
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}>
+                    <Text style={{
+                        fontWeight: '500',
+                        color: 'white',
+                    }}>{label}</Text>
+                </View>
             })}
         </View>
     );

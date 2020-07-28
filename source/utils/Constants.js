@@ -1,6 +1,6 @@
 export const NUMBER_OF_ROWS = 8;
 export const HORIZONTAL_ROWS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
-export const VERTICAL_ROWS = ['1', '2', '3', '4', '5', '6', '7', '8'];
+export const VERTICAL_ROWS = ['8', '7', '6', '5', '4', '3', '2', '1'];
 
 export const POSITION = {
     LEFT: 0,

@@ -19,7 +19,11 @@ const Grid = (props) => {
 
         return (
             <View>
-                <View key={position} style={{backgroundColor: color, width: gridSize, height: gridSize}}/>
+                <View key={position} style={{
+                    backgroundColor: color, 
+                    width: gridSize, 
+                    height: gridSize
+                }}/>
                 {piece && <Piece icon={piece}/>}
             </View>
         );
