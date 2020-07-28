@@ -11,3 +11,13 @@ export const POSITION = {
 
 export const PADDING = 15
 
+// Random openings
+export const RESET = "RESET"
+export const KINGSPAWN = "KINGSPAWN"
+export const QUEENPAWN = "QUEENPAWN"
+export const RETI = "RETI"
+export const ENGLISH = "ENGLISH"
+export const KINGSFIANCHETTO = "KINGSFIANCHETTO"
+export const ALL_MOVES = [KINGSPAWN, QUEENPAWN, RETI, ENGLISH, KINGSFIANCHETTO]
+
+

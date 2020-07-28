@@ -8,15 +8,17 @@
 
 import React from 'react';
 import Chessboard from './source/containers/chessboard';
-import { SafeAreaView } from 'react-native';
+import store from './source/redux/store';
+import { Provider } from 'react-redux';
 
 const App: () => React$Node = () => {
   return (
     <>
-        <Chessboard/>
+      <Provider store={store}>
+        <Chessboard />
+      </Provider>
     </>
   );
 };
-
 
 export default App;

@@ -194,7 +194,6 @@
 				58438BF0F08548C47168E4D0 /* Pods-RNChess-tvOSTests.debug.xcconfig */,
 				32A269FEA7DE6E9BE0474D52 /* Pods-RNChess-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

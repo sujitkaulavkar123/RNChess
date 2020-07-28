@@ -1,40 +1,28 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
-import { allPieces } from '../utils/Pieces';
 import PiecePosition from '../components/PiecePosition';
 import Grid from '../components/grid';
 import {
     HORIZONTAL_ROWS, POSITION, VERTICAL_ROWS
 } from '../utils/Constants';
+import {
+    resetBoardAction,
+    randomSelectionAction
+} from '../redux/boardReducer'
 
-export default class Chessboard extends Component {
-    static propTypes = {
-
-    };
-
-    static defaultProps = {
-
-    };
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-
-        };
-    }
-
+class Chessboard extends Component {
     resetGame = () => {
-
+        this.props.resetBoard()
     }
 
     selectRandomMove = () => {
-
+        this.props.selectRandomMove()
     }
 
     renderSquares() {
         const allSquares = []
-        allPieces.map((piece, index) => {
+        this.props.piecePositions.map((piece, index) => {
             allSquares.push(<Grid position={index} piece={piece} />)
         })
         return allSquares
@@ -43,11 +31,18 @@ export default class Chessboard extends Component {
     playActions() {
         return (
             <View style={styles.playActionContainer}>
-                <TouchableOpacity style={styles.buttonStyle} onPress={this.resetGame}>
-                    <Text>Reset</Text>
+                <TouchableOpacity
+                    disabled={this.props.disableResetButton}
+                    style={styles.buttonStyle}
+                    onPress={this.resetGame}>
+                    <Text style={{
+                        opacity: this.props.disableResetButton ? 0.3 : 1
+                    }}>Reset</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.buttonStyle} onPress={this.selectRandomMove}>
+                <TouchableOpacity
+                    style={styles.buttonStyle}
+                    onPress={this.selectRandomMove}>
                     <Text>Random</Text>
                 </TouchableOpacity>
             </View>
@@ -84,6 +79,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         flexWrap: 'wrap',
+        justifyContent: 'center'
     },
     playActionContainer: {
         width: '100%',
@@ -97,7 +93,28 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         width: 80,
         height: 40,
+        backgroundColor: '#f0f0f0',
         alignItems: 'center',
         justifyContent: 'center'
     }
 });
+
+const mapStateToProps = state => {
+    return {
+        piecePositions: state.boardReducer.newMove,
+        disableResetButton: state.boardReducer.disableResetButton,
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        selectRandomMove() {
+            dispatch(randomSelectionAction())
+        },
+        resetBoard() {
+            dispatch(resetBoardAction())
+        }
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Chessboard);

@@ -10,7 +10,7 @@ const Piece = (props) => {
             position:'absolute', 
             alignSelf: 'center'
         }}>
-            <Image source={icon} key={position}/>
+            <Image source={icon} key={position} style={{width: 40, height: 40}}/>
         </View>
     );
 }
