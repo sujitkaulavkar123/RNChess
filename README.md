@@ -24,4 +24,4 @@ check for default random openings. Click on reset button to restart the game pla
 
 ## Sample iOS Video 
 
-![Output sample](https://github.com/RNChess/sampleiOS.gif)
+![Output sample](https://github.com/sujitkaulavkar123/RNChess/raw/master/sampleiOS.gif)
